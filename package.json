@@ -2,7 +2,7 @@
 	"name": "vec",
 	"version": "0.0.2",
 	"repository": "",
-	"typings": "index",
+	"typings": "src/lib/index",
 	"description": "Drop-in 2d math library for graphical programming",
 	"main": "index.js",
 	"scripts": {
