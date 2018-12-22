@@ -14,6 +14,18 @@ Functions that accept an object parameter (e.g. a `Vector`, `Matrix`, `Line`, et
 
 Objects of these types should have easily accessible "export" getters or methods for conversions to other formats.
 
+### Formats
+
+See:
+
+* [src/lib/convertible-vector-types.ts](src/lib/convertible-vector-types.ts)
+* [src/lib/convertible-matrix-types.ts](src/lib/convertible-vector-types.ts)
+
+Conversions:
+
+* [src/lib/impl/vec.impl.ts](src/lib/impl/vec.impl.ts)
+* [src/lib/impl/mat.impl.ts](src/lib/impl/mat.impl.ts)
+
 ## Unify points, vectors, and complex numbers
 
 Unify the APIs for these three kinds of objects to allow for performing complex operations on objects normally seen as vectors, as these operations can be quite handy and are very meaningful geometrically.
