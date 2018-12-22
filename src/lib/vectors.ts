@@ -1,24 +1,6 @@
 import { Rad } from "./angles";
 import { ImplicitMat } from "./matrix";
-
-export interface PolarPoint {
-    phi: Rad;
-    r: number;
-}
-
-export interface CartesianComplex {
-    re: number;
-    im: number;
-}
-
-export type ArrayPoint = [number, number];
-
-export interface CartesianPoint {
-    x: number;
-    y: number;
-}
-
-export type ImplicitVec = [number, number] | PolarPoint | CartesianPoint | CartesianComplex | number | Vec;
+import { ArrayPoint, CartesianComplex, CartesianPoint, ImplicitVec, PolarPoint } from "./convertible-vector-types";
 
 export interface VecModule {
     point(x: number, y: number): Vec;

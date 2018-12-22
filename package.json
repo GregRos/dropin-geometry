@@ -1,12 +1,13 @@
 {
-	"name": "vec",
+	"name": "dropin-geometry",
 	"version": "0.0.2",
 	"repository": "",
 	"typings": "src/lib/index",
 	"description": "Drop-in 2d math library for graphical programming",
-	"main": "index.js",
+	"main": "dist/lib/index.js",
 	"scripts": {
-		"build": "rm-rf dist/ && tsc"
+		"build": "rm -rf dist/ && tsc",
+        "postinstall": "tsc -p ./"
 	},
 	"keywords": [],
 	"author": "Greg Rosenbaum",

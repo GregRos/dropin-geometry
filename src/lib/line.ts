@@ -1,6 +1,7 @@
-import { ImplicitVec, Vec } from "./vectors";
+import { Vec } from "./vectors";
 import { Rad } from "./angles";
 import { ImplicitMat } from "./matrix";
+import { ImplicitVec } from "./convertible-vector-types";
 
 export type ImplicitLineSegment = LineSegment;
 

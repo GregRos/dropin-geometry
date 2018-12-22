@@ -1,18 +1,20 @@
 import {
-    AceMatrix,
-    ActxMatrix,
-    ColArrayMatrix,
     ImplicitMat,
-    LinearArrayMatrix,
-    Mat,
-    MxyMatrix,
-    RowArrayMatrix
-} from "../matrix";
+    Mat} from "../matrix";
 import math = require("mathjs");
-import { ImplicitVec, Vec } from "../vectors";
+import { Vec } from "../vectors";
 import { Vecs } from "./vec.impl";
 import { Rad } from "../angles";
 import { Mats } from "./mat-module.impl";
+import {
+    AceMatrix,
+    ActxMatrix,
+    ColArrayMatrix,
+    LinearArrayMatrix,
+    MxyMatrix,
+    RowArrayMatrix
+} from "../convertible-matrix-types";
+import { ImplicitVec } from "../convertible-vector-types";
 
 function mapSame<T extends U[], U>(x: T, f: (x: U) => U) {
     return x.map(f) as T;

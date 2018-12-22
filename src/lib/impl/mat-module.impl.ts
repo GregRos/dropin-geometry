@@ -2,8 +2,9 @@ import { MatModule } from "../mat-module";
 import { MatImpl, unifyMatrix } from "./mat.impl";
 import { ImplicitMat, Mat } from "../matrix";
 import { Rad } from "../angles";
-import { ImplicitVec, Vec } from "../vectors";
+import { Vec } from "../vectors";
 import { Vecs } from "./vec.impl";
+import { ImplicitVec } from "../convertible-vector-types";
 
 
 export class MatModuleImpl implements MatModule{

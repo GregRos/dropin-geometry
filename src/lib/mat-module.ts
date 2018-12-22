@@ -1,6 +1,7 @@
 import { Rad } from "./angles";
-import { ImplicitVec, Vec } from "./vectors";
+import { Vec } from "./vectors";
 import { ImplicitMat, Mat } from "./matrix";
+import { ImplicitVec } from "./convertible-vector-types";
 
 export interface MatModule {
 

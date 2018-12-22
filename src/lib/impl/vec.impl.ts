@@ -1,8 +1,9 @@
-import { CartesianComplex, ImplicitVec, CartesianPoint, PolarPoint, Vec, VecModule } from "../vectors";
+import { Vec, VecModule } from "../vectors";
 import { Rad } from "../angles";
 import math = require("mathjs");
 import { ImplicitMat } from "../matrix";
 import { Mats } from "./mat-module.impl";
+import { CartesianComplex, CartesianPoint, ImplicitVec, PolarPoint } from "../convertible-vector-types";
 
 const Complex = require("complex.js");
 
