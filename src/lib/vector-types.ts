@@ -1,5 +1,5 @@
-import { Rad } from "./angles";
-import { Vec } from "./vectors";
+import { Rad } from "./internal/angles";
+import { Vec } from "./internal/vec";
 
 export interface PolarPoint {
     phi: Rad;

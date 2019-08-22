@@ -1,6 +1,8 @@
 // A 2x3 transformation matrix in a 6-element array format.
 // A 2x3 transformation matrix format whose topmost row is `[a, c, tx]`.
 // 2x3 transformation matrix format whose topmost row vector is `[a, c, e]`.
+import { Mat } from "./internal/mat";
+
 export interface AceMatrix {
     // Element a₁₁
     a: number;
@@ -45,3 +47,5 @@ export type LinearArrayMatrix = [number, number, number, number, number, number]
 export type RowArrayMatrix = [[number, number, number], [number, number, number]];
 export type ColArrayMatrix = [[number, number], [number, number], [number, number]];
 export type SquareRowArrayMatrix = [[number, number, number], [number, number, number], [number, number, number]];
+
+export type ImplicitMat = LinearArrayMatrix | RowArrayMatrix | SquareRowArrayMatrix | ColArrayMatrix | Partial<ActxMatrix> | Partial<AceMatrix> | Partial<MxyMatrix> | Mat;

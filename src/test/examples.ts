@@ -1,13 +1,11 @@
-import {Angles} from "../lib/angles";
-import { Vecs } from "../lib";
+import { vec } from "../lib";
+import { turn } from "../lib/internal/angles";
 
-const {turn, deg, toturn, todeg} = Angles;
+let vec1 = vec(0, 100);
 
-let vec1 = Vecs.from(0, 100);
+let vec2 = vec([0, 50])
 
-let vec2 = Vecs.from([0, 50]);
-
-let vec3 = Vecs.from({
+let vec3 = vec({
     x: 10,
     y: -5
 });
@@ -18,3 +16,4 @@ let u = vec3rotated.add(vec3);
 
 let v = vec1.add([1, 2]);
 
+console.log(v.zstring());

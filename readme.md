@@ -18,13 +18,13 @@ Objects of these types should have easily accessible "export" getters or methods
 
 See:
 
-* [src/lib/convertible-vector-types.ts](src/lib/convertible-vector-types.ts)
-* [src/lib/convertible-matrix-types.ts](src/lib/convertible-vector-types.ts)
+* [src/lib/vector-types.ts](src/lib/vector-types.ts)
+* [src/lib/matrix-types.ts](src/lib/vector-types.ts)
 
 Conversions:
 
-* [src/lib/impl/vec.impl.ts](src/lib/impl/vec.impl.ts)
-* [src/lib/impl/mat.impl.ts](src/lib/impl/mat.impl.ts)
+* [src/lib/impl/vec](src/lib/internal/vec.ts)
+* [src/lib/impl/mat.ts](src/lib/internal/mat.ts)
 
 ## Unify points, vectors, and complex numbers
 

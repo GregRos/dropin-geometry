@@ -1,57 +1,47 @@
-import { Vec, VecModule } from "../vectors";
-import { Rad } from "../angles";
+import { Rad } from "./angles";
 import math = require("mathjs");
-import { ImplicitMat } from "../matrix";
-import { Mats } from "./mat-module.impl";
-import { CartesianComplex, CartesianPoint, ImplicitVec, PolarPoint } from "../convertible-vector-types";
+import { CartesianComplex, CartesianPoint, ImplicitVec, PolarPoint } from "../vector-types";
+import { mat } from "./mat";
+import { ImplicitMat } from "../matrix-types";
 
 const Complex = require("complex.js");
 
-
-export class VecModuleImpl{
-    point(x: number, y: number) {
-        return new VecImpl(x, y);
-    }
-
-    polar(r: number, phi: number) {
-        return new VecImpl(Math.cos(phi) * r, Math.sin(phi) * r);
-    }
-
-    from(a, b?) {
-        return unifyVector(a, b);
-    }
-}
-
-export const Vecs = new VecModuleImpl() as VecModule;
-
-export function unifyVector(a: ImplicitVec, b?: number) {
-    if (a instanceof VecImpl) {
-        return new VecImpl(a.x, a.y);
+function unifyVector(a: ImplicitVec, b?: number) {
+    if (a instanceof Vec) {
+        return new Vec(a.x, a.y);
     } else if (typeof a === "number") {
         if (typeof b === "number") {
-            return new VecImpl(a, b);
+            return new Vec(a, b);
         } else {
-            return new VecImpl(a, a);
+            return new Vec(a, a);
         }
     } else if (Array.isArray(a)) {
-        return new VecImpl(a[0], a[1]);
+        return new Vec(a[0], a[1]);
     } else if (a.hasOwnProperty("x")) {
         let p = a as CartesianPoint;
-        return new VecImpl(p.x, p.y);
+        return new Vec(p.x, p.y);
     } else if (a.hasOwnProperty("re")) {
         let z = a as CartesianComplex;
         if ((a as any).isInfinite) {
 
         }
-        return new VecImpl(z.re, z.im);
+        return new Vec(z.re, z.im);
     } else if (a.hasOwnProperty("phi")) {
         let z = a as PolarPoint;
-        return new VecImpl(Math.cos(z.phi) * z.r, Math.sin(z.phi) * z.r);
+        return new Vec(Math.cos(z.phi) * z.r, Math.sin(z.phi) * z.r);
     }
     throw new Error("Not a unknown vector, complex, or point type.");
 }
 
-export class VecImpl implements Vec {
+export function vec(x: ImplicitVec, y?: number) {
+    return unifyVector(x, y);
+}
+
+export function polar(r: number, phi: number) {
+    return vec(Math.cos(phi) * r, Math.sin(phi) * r);
+}
+
+export class Vec {
     constructor(public x: number, public y: number) {
 
     }
@@ -60,44 +50,44 @@ export class VecImpl implements Vec {
         return [this.x, this.y] as [number, number];
     }
 
-    get complex() {
+    get complex(): CartesianComplex {
         return {
             re: this.x,
             im: this.y
         };
     }
 
-    get polar() {
+    get polar(): PolarPoint {
         return {
             phi: this.angle(),
             r: this.len
         };
     }
 
-    get im() {
+    get im(): number {
         return this.y;
     }
 
-    get re() {
+    get re(): number {
         return this.x;
     }
 
-    get isZero() {
+    get isZero(): boolean {
         return !!(math.isZero(this.x) && math.isZero(this.y));
     }
 
-    get len() {
+    get len(): number {
         return +math.norm(this.arr);
     }
 
-    get simple() {
+    get simple(): CartesianPoint {
         return {
             x: this.x,
             y: this.y
         };
     }
 
-    get unit() {
+    get unit(): Vec {
         let result = this.len;
         return this.mul(1 / result);
     }
@@ -179,7 +169,7 @@ export class VecImpl implements Vec {
     }
 
     rotate(theta: Rad): Vec {
-        return this.zmul(Vecs.polar(1, theta));
+        return this.zmul(polar(1, theta));
     }
 
     mul(v: ImplicitVec | number, y?: number): Vec {
@@ -207,16 +197,16 @@ export class VecImpl implements Vec {
         return vs;
     }
 
-    get neg() {
+    get neg(): Vec {
         return unifyVector(-this.x, -this.y);
     }
 
-    get as3() {
-        return [this.x, this.y, 1] as any;
+    get as3(): [number, number, number] {
+        return [this.x, this.y, 1];
     }
 
     zconj(): Vec {
-        return Vecs.point(-this.x, this.y);
+        return vec(-this.x, this.y);
     }
 
     zdiv(z: ImplicitVec | number, y?: number): Vec {
@@ -248,7 +238,7 @@ export class VecImpl implements Vec {
         let vs = unifyVector(z, y);
         return unifyVector(new Complex(this).mul(vs));
     }
-ve
+
     zstring(): string {
         return new Complex(this).toString();
     }
@@ -259,8 +249,10 @@ ve
     }
 
     transform(m: ImplicitMat): Vec {
-        let mU = Mats.from(m);
+        let mU = mat(m);
         return mU.apply(this);
     }
 
 }
+
+

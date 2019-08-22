@@ -1,12 +1,21 @@
-export { ImplicitVec } from "./convertible-vector-types";
+export {
+    vec,
+    polar,
+    Vec
+} from "./internal/vec";
 
-import { VecModule } from "./vectors";
-import { VecModuleImpl } from "./impl/vec.impl";
+export {
+    Mat,
+    Mats,
+    mat
+} from "./internal/mat";
 
-export {Angles} from "./angles";
-export {Vec, VecModule} from "./vectors";
-export {ImplicitMat, Mat} from "./matrix";
-
-export {Vecs} from "./impl/vec.impl";
-
-export {Mats} from "./impl/mat-module.impl";
+export {
+    Deg,
+    deg,
+    Rad,
+    todeg,
+    toturn,
+    Turn,
+    turn,
+} from "./internal/angles";
