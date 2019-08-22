@@ -248,7 +248,7 @@ export class VecImpl implements Vec {
         let vs = unifyVector(z, y);
         return unifyVector(new Complex(this).mul(vs));
     }
-
+ve
     zstring(): string {
         return new Complex(this).toString();
     }
