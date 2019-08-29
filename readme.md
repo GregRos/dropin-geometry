@@ -1,8 +1,6 @@
 # dropin-geometry
 
-The idea of `dropin-geometry` is to provide 2d geometry functions for drawing libraries that lack some of those functions.
-
-This is achieved by having 2d objects that are easily convertible to other object formats used by graphics libraries.
+The idea of `dropin-geometry` is to provide 2d geometry functions for drawing libraries that lack some of those functions. This is achieved by having 2d objects that are easily convertible to other object formats used by graphics libraries and that support different math operations. It's largely an experiment.
 
 In practice though, there are lots of existing geometry libraries. It's probably better to add functionality to those other libraries.
 
@@ -14,23 +12,9 @@ Functions that accept an object parameter (e.g. a `Vector`, `Matrix`, `Line`, et
 
 Objects of these types should have easily accessible "export" getters or methods for conversions to other formats.
 
-### Formats
-
-See:
-
-* [src/lib/vector-types.ts](src/lib/vector-types.ts)
-* [src/lib/matrix-types.ts](src/lib/vector-types.ts)
-
-Conversions:
-
-* [src/lib/impl/vec](src/lib/internal/vec.ts)
-* [src/lib/impl/mat.ts](src/lib/internal/mat.ts)
-
 ## Unify points, vectors, and complex numbers
 
-Unify the APIs for these three kinds of objects to allow for performing complex operations on objects normally seen as vectors, as these operations can be quite handy and are very meaningful geometrically.
-
-Allow conversion to and from these different representations.
+Unify the APIs for these three kinds of objects to allow for performing ℂ operations on objects normally seen as vectors, as these operations can be quite handy and are very meaningful geometrically. For example, I prefer of thinking about 2D rotations as multiplication by complex numbers on the unit circle instead of as matrices, as long as 
 
 ## Convenient angle conversion API
 
@@ -39,7 +23,7 @@ The idea is to allow code like this:
 ``` typescript
 // turn: Turn => Rad
 // Actually converts *from* turn
-let result1 = Math.sin(turn(0.5)); // the same as Math.sin(π / 2)
+let result1 = Math.sin(turn(0.5)); // the same as Math.sin(tau * 0.5)
 
 let result2 = Math.sin(deg(60)); // The same as Math.sin(π / 3);
 
